@@ -2,10 +2,10 @@ package Entities;
 
 public class ListaCircular02 {
 
-    // Referência para a cabeça da lista circular
+    // Lista Circular Adaptada às Classes Tail e Head.
     public Head inicio;
 
-    // Construtor
+    
     public ListaCircular02() {
         this.inicio = new Head();
     }
@@ -32,9 +32,9 @@ public class ListaCircular02 {
         aux.ant.prox = novo;
         aux.ant = novo;
 
-        this.inicio.soma += valor; // Atualiza a soma
+        this.inicio.soma += valor; 
         this.inicio.tamanho++;
-        this.inicio.atualizarMedia(); // Atualiza a média
+        this.inicio.atualizarMedia();
         atualizarMaiorMenor(valor);
 
         return novo;
@@ -85,9 +85,9 @@ public class ListaCircular02 {
             this.inicio.primeiro = novoPrimeiro;
         }
 
-        this.inicio.soma -= primeiro.valor; // Atualiza a soma
+        this.inicio.soma -= primeiro.valor; 
         this.inicio.tamanho--;
-        this.inicio.atualizarMedia(); // Atualiza a média
+        this.inicio.atualizarMedia(); 
 
         if (primeiro.valor == this.inicio.maior || primeiro.valor == this.inicio.menor) {
             recalcularMaiorMenor();
@@ -121,9 +121,9 @@ public class ListaCircular02 {
             this.inicio.primeiro = novo;
         }
 
-        this.inicio.soma += valor; // Atualiza a soma
+        this.inicio.soma += valor; 
         this.inicio.tamanho++;
-        this.inicio.atualizarMedia(); // Atualiza a média
+        this.inicio.atualizarMedia();
         atualizarMaiorMenor(valor);
 
         return novo;
@@ -144,9 +144,9 @@ public class ListaCircular02 {
         this.inicio.primeiro.ant = novo;
         this.inicio.tail.ultimo = novo;
 
-        this.inicio.soma += valor; // Atualiza a soma
+        this.inicio.soma += valor; 
         this.inicio.tamanho++;
-        this.inicio.atualizarMedia(); // Atualiza a média
+        this.inicio.atualizarMedia();
         atualizarMaiorMenor(valor);
 
         return novo;
