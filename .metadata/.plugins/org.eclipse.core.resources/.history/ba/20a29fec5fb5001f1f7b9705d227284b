@@ -1,0 +1,22 @@
+package Application;
+
+import Entities.ListaDupla;
+
+public class Program {
+
+	public static void main(String[] args) {
+		
+		ListaDupla list =  new ListaDupla();
+		
+		list.addElemento(10);
+		list.addElemento(20);
+		list.addElemento(30);
+		list.addElemento(40);
+		
+		list.exibirLista();
+		
+		list.exibirListaInvertida();
+		
+	}
+
+}

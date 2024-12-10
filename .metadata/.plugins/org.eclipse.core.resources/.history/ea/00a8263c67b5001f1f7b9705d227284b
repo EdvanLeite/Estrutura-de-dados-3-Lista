@@ -1,0 +1,23 @@
+package Application;
+
+import Entities.ListaCircular;
+
+public class Program {
+
+	public static void main(String[] args) {
+
+		ListaCircular list = new ListaCircular();
+
+		list.addElemento(10);
+		list.addElemento(20);
+		list.addElemento(30);
+		list.addElemento(40);
+
+		list.exibirLista();
+		System.out.println();
+	
+
+	
+	}
+
+}

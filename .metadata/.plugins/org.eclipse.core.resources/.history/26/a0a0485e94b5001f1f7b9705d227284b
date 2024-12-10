@@ -1,0 +1,161 @@
+package Entities;
+
+public class ListaCircular02 {
+	
+	// Lista Circular Adaptada as Classes Head e Tail
+    public Head inicio; 
+
+    public ListaCircular02() {
+        this.inicio = new Head();
+    }
+
+    public Bloco addElemento(int valor) {
+        return this.addElementoFim(valor);
+    }
+
+    public Bloco addElemento(int valor, int posicao) {
+        if (posicao <= 0) {
+            return this.addElementoInicio(valor);
+        }
+
+        if (posicao >= this.inicio.tamanho) {
+            return this.addElementoFim(valor);
+        }
+
+        Bloco novo = new Bloco(valor);
+        Bloco aux = this.localizarBloco(posicao);
+
+        novo.prox = aux;
+        novo.ant = aux.ant;
+
+        aux.ant.prox = novo;
+        aux.ant = novo;
+
+        this.inicio.tamanho++;
+        return novo;
+    }
+
+    
+    public Bloco removerElementoFim() {
+        if (this.isVazia()) {
+            return null;
+        }
+
+        if (this.inicio.tamanho == 1) {
+            return this.removerElementoInicio();
+        }
+
+        Bloco ultimo = this.inicio.tail.ultimo;
+        Bloco penultimo = ultimo.ant;
+
+        penultimo.prox = this.inicio.primeiro;
+        this.inicio.primeiro.ant = penultimo;
+
+        this.inicio.tail.ultimo = penultimo;
+        this.inicio.tamanho--;
+
+        return ultimo;
+    }
+
+    public Bloco removerElementoInicio() {
+        if (this.isVazia()) {
+            return null;
+        }
+
+        Bloco primeiro = this.inicio.primeiro;
+
+        if (this.inicio.tamanho == 1) {
+            this.inicio.primeiro = null;
+            this.inicio.tail.ultimo = null;
+        } else {
+            Bloco novoPrimeiro = primeiro.prox;
+            novoPrimeiro.ant = this.inicio.tail.ultimo;
+            this.inicio.tail.ultimo.prox = novoPrimeiro;
+            this.inicio.primeiro = novoPrimeiro;
+        }
+
+        this.inicio.tamanho--;
+        return primeiro;
+    }
+
+    public boolean isVazia() {
+        return this.inicio.tamanho == 0;
+    }
+
+    private Bloco addElementoInicio(int valor) {
+        Bloco novo = new Bloco(valor);
+
+        if (this.isVazia()) {
+            novo.prox = novo;
+            novo.ant = novo;
+            this.inicio.primeiro = novo;
+            this.inicio.tail = new Tail(novo);
+        } else {
+            Bloco primeiro = this.inicio.primeiro;
+            Bloco ultimo = this.inicio.tail.ultimo;
+
+            novo.prox = primeiro;
+            novo.ant = ultimo;
+
+            primeiro.ant = novo;
+            ultimo.prox = novo;
+
+            this.inicio.primeiro = novo;
+        }
+
+        this.inicio.tamanho++;
+        return novo;
+    }
+
+    private Bloco addElementoFim(int valor) {
+        if (this.isVazia()) {
+            return this.addElementoInicio(valor);
+        }
+
+        Bloco novo = new Bloco(valor);
+        Bloco ultimo = this.inicio.tail.ultimo;
+
+        novo.prox = this.inicio.primeiro;
+        novo.ant = ultimo;
+
+        ultimo.prox = novo;
+        this.inicio.primeiro.ant = novo;
+        this.inicio.tail.ultimo = novo;
+
+        this.inicio.tamanho++;
+        return novo;
+    }
+
+    public Bloco localizarBloco(int pos) {
+        if (this.isVazia() || pos < 0 || pos >= this.inicio.tamanho) {
+            return null;
+        }
+
+        Bloco aux = this.inicio.primeiro;
+        
+        for (int i = 0; i < pos; i++) {
+            aux = aux.prox;
+        }
+
+        return aux;
+    }
+
+    
+    public void exibirLista() {
+        if (this.isVazia()) {
+            System.out.println("Lista vazia.");
+            return;
+        }
+
+        Bloco aux = this.inicio.primeiro;
+        do {
+            System.out.print(aux.valor + " ");
+            aux = aux.prox;
+        } while (aux != this.inicio.primeiro);
+
+        System.out.println();
+    }
+}
+    
+  
+

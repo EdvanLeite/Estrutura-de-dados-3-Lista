@@ -1,0 +1,12 @@
+public class Head {
+	
+    public Bloco primeiro; 
+    public Tail tail;      
+    public int tamanho;    
+
+    public Head() {
+        this.primeiro = null;
+        this.tail = null;
+        this.tamanho = 0;
+    }
+}

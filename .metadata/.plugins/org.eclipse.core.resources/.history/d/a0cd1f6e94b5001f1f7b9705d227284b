@@ -1,0 +1,26 @@
+package Application;
+
+import Entities.ListaCircular02;
+
+public class Program {
+
+	public static void main(String[] args) {
+
+		ListaCircular02 list = new ListaCircular02();
+
+		list.addElemento(10);
+		list.addElemento(20);
+		list.addElemento(30);
+		list.addElemento(40);
+
+		list.exibirLista();
+		System.out.println();
+		
+		System.out.println("Dados Head: Tam --> " + list.inicio.tamanho+"  Primeiro Valor: "+list.inicio.primeiro.valor+"  Ultimo elemento: "+ list.inicio.tail.ultimo.valor);
+		System.out.println("Dados Head: Maior --> " + list.inicio.maior+"  Menor: "+list.inicio.menor+"  Media: "+ list.inicio.tail.ultimo.valor);
+	
+
+	
+	}
+
+}
